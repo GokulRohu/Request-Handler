@@ -158,7 +158,7 @@
             const container = document.getElementById('container');
             container.innerHTML = '';
             try {
-                const { data } = await apiRequest(`http://localhost:3000/api/v1/requests/${id}`);
+                const { data } = await apiRequest(`https://request-handler-2.onrender.com/api/v1/requests/${id}`);
                 
                 if (data.length === 0) {
                     container.innerHTML = `<p class="no-results">No requests found.</p>`;
@@ -212,7 +212,7 @@
         async function toggleStatus(requestId, currentStatus) {
             const newStatus = currentStatus === 'In progress' ? 'Completed' : 'In progress';
             try {
-                await apiRequest(`http://localhost:3000/api/v1/requests/${requestId}`, {
+                await apiRequest(`https://request-handler-2.onrender.com/api/v1/requests/${requestId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ status: newStatus }),
@@ -227,7 +227,7 @@
 
         async function deleteRequest(requestId) {
             try {
-                await apiRequest(`http://localhost:3000/api/v1/requests/${requestId}`, {
+                await apiRequest(`https://request-handler-2.onrender.com/api/v1/requests/${requestId}`, {
                     method: 'DELETE',
                 });
                 alert(`Request with id ${requestId} is deleted successfully.`);
